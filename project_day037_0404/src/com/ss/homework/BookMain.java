@@ -94,7 +94,7 @@ public class BookMain extends JFrame implements ItemListener, ActionListener {
 		group = new CheckboxGroup();
 		ch_table = new Checkbox("테이블", group, true);
 		ch_grid = new Checkbox("그리드", group, false);
-		chooser = new JFileChooser("C:/git/java_workspace2/project_day037_0404/res/");
+		chooser = new JFileChooser("E:/git/java_workspace2/project_day037_0404/res/");
 
 		URL url = this.getClass().getResource("/pica2.jpg");
 		try {
@@ -377,7 +377,7 @@ public class BookMain extends JFrame implements ItemListener, ActionListener {
 		try {
 			fis = new FileInputStream(file);
 			String filename = file.getName();
-			fos = new FileOutputStream("C:/git/java_workspace2/project_day037_0404/data/" + filename);
+			fos = new FileOutputStream("E:/git/java_workspace2/project_day037_0404/data/" + filename);
 
 			/*
 			 * int data; while (true) { data = fis.read(); if(data==-1) break;

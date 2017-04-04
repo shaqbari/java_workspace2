@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 public class GridPanel extends JPanel{
 	private Connection con;
-	String path="C:/git/java_workspace2/project_day037_0404/data/";
+	String path="E:/git/java_workspace2/project_day037_0404/data/";
 	ArrayList<Book> list = new ArrayList<Book>();
 	
 	public GridPanel(){
