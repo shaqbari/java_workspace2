@@ -50,7 +50,9 @@ public class GridPanel extends JPanel{
 			/*this.removeAll();
 			for (int i = 0; i < list.size(); i++) {
 				list.remove(i);
-			} 여기서는 붙기 전이므로 프레임에서 지워보자.*/		
+			} 여기서는 for문의 list에 자료가 붙기 전이므로 프레임에서 지워보자.*/		
+			
+			//this.removeAll();이거는 여기서 해도된다.
 			
 			while (rs.next()) {
 				Book dto = new Book();//레코드 1건 담기 위한 인스턴스

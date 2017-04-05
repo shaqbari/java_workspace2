@@ -6,6 +6,7 @@ import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
 import java.awt.Choice;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -290,7 +291,15 @@ public class BookMain extends JFrame implements ItemListener, ActionListener {
 	}
 
 	// 상품등록 메소드
+	
 	public void regist() {
+		//기존에 등록된 컴포넌트가 있다면 컴포넌트 지우기
+		Component[] comp=p_grid.getComponents();
+		System.out.println("포함한 자식은"+comp.length);
+		//removeall()써도 되지만 복합적으로 다른 컴포넌트가 있으면 위험하다. getComponents로 자료형을 조사해서 if문으로 특정 자료형만 지우는 것도 가능
+		
+		
+		
 		/*
 		 * 내가 지금 선택한 서브카테고리 초이스의 index를 구해서, 그 index로 ArrayList를 접근하여 객체를 반환받으면
 		 * 정보를 유용하게 쓸 수 있다.
@@ -335,12 +344,13 @@ public class BookMain extends JFrame implements ItemListener, ActionListener {
 				//위에 두개만 하면 누적이 되어버림 그러므로 vector에서 지워야 한다.
 				
 				
+				((GridPanel)p_grid).removeAll();//먼저 지우고, 컬프에서도 지운다.
 				int leng=((GridPanel)p_grid).list.size();
 				for (int i = 0; i <leng; i++) { //여기에 size가 오면 지우는 도중에 size가 작아진다. 그리고 0번째를 지워야 한다.
 					((GridPanel)p_grid).list.remove(0);
-				}			
+				}//removeall과 둘다 해줘야 한다	
 				
-				((GridPanel)p_grid).init(); //한번더 조회 일으키기
+				((GridPanel)p_grid).loadData(); //한번더 조회 일으키기 table패널과는 다르게 dataload메소드에 init메소드가 있다.
 				((GridPanel)p_grid).updateUI(); //UI갱신
 				
 				
