@@ -31,7 +31,14 @@ public class MyModel extends AbstractTableModel{
 
 	//row, col에 위치한 셀을 편집가능하게 하는 메소드를 오버라이드
 	public boolean isCellEditable(int row, int col) {
-		return true;
+		boolean flag=false; //0번째 column인 primary key로 사용되는 seq는 편집 안되게 하자
+		if(col==0){
+			flag=false;
+		}else {
+			flag=true;
+		}
+		
+		return flag;
 	}
 	
 	public void setValueAt(Object Value, int row, int col) {
