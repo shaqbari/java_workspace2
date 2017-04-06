@@ -99,7 +99,7 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 			public void mouseClicked(MouseEvent e) {
 				JTable t=(JTable) e.getSource();
 				
-				int row=t.getSelectedRow();
+				int row=t.getSelectedRow(); //list에서도 삭제할수 있게 멤버변수로 빼자.
 				int col=0; //seq는 첫번째 컬림이니깐.
 				
 				seq=(String) t.getValueAt(row, 0); //멤버변수로 빼자				
@@ -394,6 +394,10 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 				int result=pstmt.executeUpdate();
 				if (result!=0) {
 					JOptionPane.showMessageDialog(this, "삭제완료");
+					
+					
+					//갱신전에 list에서 삭제?
+					list.remove(0);
 					table.updateUI();//테이블갱신
 				}			
 				
