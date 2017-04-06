@@ -236,7 +236,7 @@ public class LoadMain extends JFrame implements ActionListener{
 						
 						/*if (cell.getCellType()==HSSFCell.CELL_TYPE_NUMERIC) {
 							
-						}else if (cell.getCellType()==HSSFCell.CELL_TYPE_STRING){
+						}else if (cell.get){
 														
 						}*/
 						//자료형에 국한되지 않고 모두 스트링 처리
