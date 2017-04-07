@@ -66,7 +66,8 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 	StringBuffer insertSql=new StringBuffer();
 	
 	String seq; //선택한 row의 seq저장
-	
+	int row; //선택한 row index
+	MyModel myModel;
 	
 	public LoadMain() {
 		p_north= new JPanel();
@@ -99,7 +100,7 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 			public void mouseClicked(MouseEvent e) {
 				JTable t=(JTable) e.getSource();
 				
-				int row=t.getSelectedRow(); //list에서도 삭제할수 있게 멤버변수로 빼자.
+				row=t.getSelectedRow(); //list에서도 삭제할수 있게 멤버변수로 빼자.
 				int col=0; //seq는 첫번째 컬림이니깐.
 				
 				seq=(String) t.getValueAt(row, 0); //멤버변수로 빼자				
@@ -220,7 +221,12 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 			
 			//jtable 나오게 처리
 			getList();
-			table.setModel(new MyModel(columnName, list));
+			
+			
+			//table.setModel(new MyModel(columnName, list));
+			//나중에 갱신할때 사용하기 위해 따로 멤버변수로 저장ㄴ
+			myModel=new MyModel(columnName, list);
+			table.setModel(myModel);
 			
 			//테이블 모델과 리스너와의 연결
 			table.getModel().addTableModelListener(this);//현재쓰고있는 모델을 반환해준다.
@@ -396,8 +402,14 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 					JOptionPane.showMessageDialog(this, "삭제완료");
 					
 					
+					
 					//갱신전에 list에서 삭제?
-					list.remove(0);
+					//list.remove(row);
+					
+					//방금 완성된 list를 다시 MyModel에 대입 필요
+					getList();
+					myModel.list=list;
+					
 					table.updateUI();//테이블갱신
 				}			
 				
