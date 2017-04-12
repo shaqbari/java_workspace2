@@ -66,6 +66,7 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 	StringBuffer insertSql=new StringBuffer();
 	
 	String seq; //선택한 row의 seq저장
+	int row; //선택한 row의 index
 	
 	
 	public LoadMain() {
@@ -99,7 +100,7 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 			public void mouseClicked(MouseEvent e) {
 				JTable t=(JTable) e.getSource();
 				
-				int row=t.getSelectedRow(); //list에서도 삭제할수 있게 멤버변수로 빼자.
+				row=t.getSelectedRow(); //list에서도 삭제할수 있게 멤버변수로 빼자.
 				int col=0; //seq는 첫번째 컬림이니깐.
 				
 				seq=(String) t.getValueAt(row, 0); //멤버변수로 빼자				
@@ -397,7 +398,7 @@ public class LoadMain extends JFrame implements ActionListener, TableModelListen
 					
 					
 					//갱신전에 list에서 삭제?
-					list.remove(0);
+					list.remove(row);
 					table.updateUI();//테이블갱신
 				}			
 				
